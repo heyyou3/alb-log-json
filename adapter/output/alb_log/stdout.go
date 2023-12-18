@@ -8,10 +8,9 @@ type OutputALBLogStdoutAdapter struct {
 func (o *OutputALBLogStdoutAdapter) Save(albLog []string) bool {
 	for _, log := range albLog {
 		fmt.Println(log)
-		return true
 	}
 
-	return false
+	return true
 }
 
 var _ OutputALBLogAdapter = &OutputALBLogStdoutAdapter{}
