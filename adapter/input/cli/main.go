@@ -1,9 +1,9 @@
 package main
 
 import (
-	"alb-log-parser/adapter/output/alb_log"
-	"alb-log-parser/adapter/output/filestorage"
-	"alb-log-parser/port/fetch_alb_log"
+	"alb-log-json/adapter/output/alb_log"
+	"alb-log-json/adapter/output/filestorage"
+	"alb-log-json/port/fetch_alb_log"
 	"context"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
