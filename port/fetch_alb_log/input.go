@@ -1,14 +1,16 @@
 package fetch_alb_log
 
+import "alb-log-parser/domain/alb_log_struct"
+
 type IFetchALBLogInput interface {
-	Invoke() ([]*FetchALBLogStruct, error)
+	Invoke() ([]*alb_log_struct.ALBLogStruct, error)
 }
 
 type FetchALBLogInput struct {
 	Usecase IFetchALBLogUsecase
 }
 
-func (i *FetchALBLogInput) Invoke() ([]*FetchALBLogStruct, error) {
+func (i *FetchALBLogInput) Invoke() ([]*alb_log_struct.ALBLogStruct, error) {
 	// TODO: user input value validation
 	return i.Usecase.Invoke()
 }
