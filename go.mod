@@ -1,4 +1,4 @@
-module alb-log-parser
+module alb-log-json
 
 go 1.21
 

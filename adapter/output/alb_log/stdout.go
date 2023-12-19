@@ -1,7 +1,7 @@
 package alb_log
 
 import (
-	"alb-log-parser/domain/alb_log_struct"
+	"alb-log-json/domain/alb_log_struct"
 	"encoding/json"
 	"fmt"
 )

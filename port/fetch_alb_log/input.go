@@ -1,6 +1,6 @@
 package fetch_alb_log
 
-import "alb-log-parser/domain/alb_log_struct"
+import "alb-log-json/domain/alb_log_struct"
 
 type IFetchALBLogInput interface {
 	Invoke() ([]*alb_log_struct.ALBLogStruct, error)

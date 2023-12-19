@@ -1,8 +1,8 @@
 package fetch_alb_log
 
 import (
-	"alb-log-parser/adapter/output/filestorage"
-	"alb-log-parser/domain/alb_log_struct"
+	"alb-log-json/adapter/output/filestorage"
+	"alb-log-json/domain/alb_log_struct"
 	"context"
 	"errors"
 	"golang.org/x/sync/errgroup"

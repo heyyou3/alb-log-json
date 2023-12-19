@@ -1,6 +1,6 @@
 package fetch_alb_log
 
-import "alb-log-parser/adapter/output/filestorage"
+import "alb-log-json/adapter/output/filestorage"
 
 type IFetchALBLogOutput interface {
 	FetchALBLog(param filestorage.FetchALBLogParam) ([]string, error)
