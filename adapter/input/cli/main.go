@@ -55,7 +55,7 @@ func run(conf *config) int {
 func main() {
 	conf, err := loadConfig()
 	if err != nil {
-		fmt.Printf("Error: failed load toml config.\nCreate `alblogjson-config.toml`.\n")
+		fmt.Fprintf(os.Stderr, "Error: failed load toml config.\nCreate `alblogjson-config.toml`.\n")
 		os.Exit(1)
 	}
 	os.Exit(run(conf))
