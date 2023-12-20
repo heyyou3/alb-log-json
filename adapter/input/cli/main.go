@@ -5,11 +5,16 @@ import (
 	"alb-log-json/adapter/output/filestorage"
 	"alb-log-json/port/fetch_alb_log"
 	"context"
+	"flag"
 	"fmt"
 	"github.com/BurntSushi/toml"
 	awsconfig "github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"os"
+)
+
+var (
+	cliVersion string
 )
 
 type config struct {
@@ -53,6 +58,15 @@ func run(conf *config) int {
 }
 
 func main() {
+	var version bool
+	flag.BoolVar(&version, "version", false, "show version")
+	flag.Parse()
+
+	if version {
+		fmt.Println(cliVersion)
+		os.Exit(0)
+	}
+
 	conf, err := loadConfig()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error: failed load toml config.\nCreate `alblogjson-config.toml`.\n")
