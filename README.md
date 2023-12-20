@@ -48,19 +48,19 @@
 - Mac(arm64)
 
 ```shell
-curl -sLO https://github.com/heyyou3/alb-log-json/releases/download/v0.0.1-beta-darwin-arm64/alblogjson && chmod +x ./alblogjson
+curl -sLO https://github.com/heyyou3/alb-log-json/releases/download/v0.1.0-darwin-arm64/alblogjson && chmod +x ./alblogjson
 ```
 
 - Mac(amd64)
 
 ```shell
-curl -sLO https://github.com/heyyou3/alb-log-json/releases/download/v0.0.1-beta-darwin-amd64/alblogjson && chmod +x ./alblogjson
+curl -sLO https://github.com/heyyou3/alb-log-json/releases/download/v0.1.0-darwin-amd64/alblogjson && chmod +x ./alblogjson
 ```
 
 - Linux(amd64)
 - 
 ```shell
-curl -sLO https://github.com/heyyou3/alb-log-json/releases/download/v0.0.1-beta-linux-amd64/alblogjson && chmod +x ./alblogjson
+curl -sLO https://github.com/heyyou3/alb-log-json/releases/download/v0.1.0-linux-amd64/alblogjson && chmod +x ./alblogjson
 ```
 
 2. [./example/alblogjson-config.json](./example/alblogjson-config.toml)を `alblogjson` コマンドと同階層に配置し、パラメータを入力
