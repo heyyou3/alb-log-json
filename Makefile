@@ -6,7 +6,7 @@ APP_NAME := 'alblogjson'
 
 build.darwin.arm64: clean
 	@cd $(MAKEFILE_DIR) && \
-	GOOS=darwin GOARCH=arm64 go build -o $(GO_LD_FLAG) $(APP_NAME) $(GO_ENTRY_POINT)
+	GOOS=darwin GOARCH=arm64 go build $(GO_LD_FLAG) -o $(APP_NAME) $(GO_ENTRY_POINT)
 
 build.darwin.amd64: clean
 	@cd $(MAKEFILE_DIR) && \
