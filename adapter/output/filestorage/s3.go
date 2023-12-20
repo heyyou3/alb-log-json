@@ -7,6 +7,11 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"golang.org/x/sync/errgroup"
 	"strings"
+	"sync"
+)
+
+var (
+	mutex = sync.Mutex{}
 )
 
 type OutputFileStorageS3Adapter struct {
@@ -68,7 +73,11 @@ func (o *OutputFileStorageS3Adapter) FetchALBLog(param FetchALBLogParam) ([]stri
 				return err
 			}
 			ll := strings.Split(log, "\n")
+
+			mutex.Lock()
 			res = append(res, ll...)
+			mutex.Unlock()
+
 			return nil
 		})
 	}
