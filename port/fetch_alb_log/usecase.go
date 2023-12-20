@@ -9,11 +9,13 @@ import (
 	"net/url"
 	"regexp"
 	"strings"
+	"sync"
 )
 
 var (
 	regALB = regexp.MustCompile(`(.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) (.+) "(.+)" "(.+)" (.+) (.+) (.+) "(.+)" "(.+)" "(.+)" (.+) (.+) "(.+)" "(.+)" "(.+)" "(.+)" "(.+)"`)
 	regReq = regexp.MustCompile(`(.+) (.+) (.+)`)
+	mutex  = sync.Mutex{}
 )
 
 type IFetchALBLogUsecase interface {
@@ -39,7 +41,7 @@ func (u *FetchALBLogUsecase) Invoke() ([]*alb_log_struct.ALBLogStruct, error) {
 	}
 	eg, _ := errgroup.WithContext(context.Background())
 	// NOTE: for local processing, Parallel Limit 1000
-	eg.SetLimit(1000)
+	eg.SetLimit(2000)
 	for _, log := range albLogs {
 		log := log
 		eg.Go(func() error {
@@ -60,6 +62,7 @@ func (u *FetchALBLogUsecase) Invoke() ([]*alb_log_struct.ALBLogStruct, error) {
 				return nil
 			}
 
+			mutex.Lock()
 			res = append(res, &alb_log_struct.ALBLogStruct{
 				Type:                   data[1],
 				Timestamp:              data[2],
@@ -94,6 +97,8 @@ func (u *FetchALBLogUsecase) Invoke() ([]*alb_log_struct.ALBLogStruct, error) {
 				TargetPortList:         data[26],
 				TargetStatusCodeList:   data[27],
 			})
+			mutex.Unlock()
+
 			return nil
 		})
 	}
